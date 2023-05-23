@@ -20,7 +20,7 @@ if (isset($_GET['id'])) {
         $deleteQuery = "DELETE FROM survey_data WHERE id = $id";
         mysqli_query($conn, $deleteQuery);
 
-        header("Location: menu22.php"); // Mengarahkan kembali ke halaman menu22.php setelah memproses data
+        header("Location: menu22.php"); 
         exit();
     }
 }
@@ -73,8 +73,7 @@ if (isset($_GET['id'])) {
                             <td data-label="tunggakan"><?= $tunggakan; ?></td>
                             <td>
                                 <?php if ($disabled == '') { ?>
-                                    <a class="next <?= $btn_class; ?>" href="menu22.php?id=<?= $pln['id']; ?>">next</a>
-                                <?php } ?>
+                                    <a class="next <?= $btn_class; ?>" href="insert_data.php?id=<?= $pln['id']; ?>&redirect=menu22.php">next</a><?php } ?>
                             </td>
                         </tr>
                 <?php
