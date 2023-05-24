@@ -3,7 +3,7 @@ require 'dbcon.php';
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $selectQuery = "SELECT * FROM survey_data WHERE id = $id";
+    $selectQuery = "SELECT * FROM repo WHERE id = $id";
     $result = mysqli_query($conn, $selectQuery);
     if (mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);
@@ -14,10 +14,10 @@ if (isset($_GET['id'])) {
         $p2tl = $row['p2tl'];
         $tunggakan = $row['tunggakan'];
 
-        $insertQuery = "INSERT INTO repo (nama, alamat, dokumen, kondisi, p2tl, tunggakan) VALUES ('$nama', '$alamat', '$dokumen', '$kondisi', '$p2tl', '$tunggakan')";
+        $insertQuery = "INSERT INTO tb_3 (nama, alamat, dokumen, kondisi, p2tl, tunggakan) VALUES ('$nama', '$alamat', '$dokumen', '$kondisi', '$p2tl', '$tunggakan')";
         mysqli_query($conn, $insertQuery);
 
-        $deleteQuery = "DELETE FROM survey_data WHERE id = $id";
+        $deleteQuery = "DELETE FROM repo WHERE id = $id";
         mysqli_query($conn, $deleteQuery);
 
         header("Location: menu22.php"); 
@@ -31,9 +31,6 @@ if (isset($_GET['id'])) {
 
 <head>
     <link rel="stylesheet" href="style.css">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title>Tampil Data Survey</title>
 </head>
 
@@ -43,8 +40,8 @@ if (isset($_GET['id'])) {
         <table>
             <thead>
                 <tr>
-                    <th class="id">No</th>
-                    <th >Nama</th>
+                    <th>No</th>
+                    <th>Nama</th>
                     <th>Alamat</th>
                     <th>Dokumen</th>
                     <th>Kondisi</th>
@@ -55,7 +52,7 @@ if (isset($_GET['id'])) {
             </thead>
             <tbody>
                 <?php
-                $query = "SELECT * FROM survey_data";
+                $query = "SELECT * FROM tb_3";
                 $query_run = mysqli_query($conn, $query);
                 if (mysqli_num_rows($query_run) > 0) {
                     while ($pln = mysqli_fetch_assoc($query_run)) {
@@ -75,12 +72,16 @@ if (isset($_GET['id'])) {
                             <td data-label="p2tl"><?= $p2tl; ?></td>
                             <td data-label="tunggakan"><?= $tunggakan; ?></td>
                             <td>
-                                <a class="next <?= $btn_class; ?>" href="insert_data.php" <?= $disabled; ?>>next</a>
+                                <?php if ($disabled == '') { ?>
+                                <a class="next <?= $btn_class; ?>" href="insert_data2.php?id=<?= $pln['id']; ?>" <?= $disabled ?>>next</a>
+
                             </td>
                         </tr>
+                        
                 <?php
                     }
                 }
+            }
                 ?>
             </tbody>
         </table>

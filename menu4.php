@@ -66,14 +66,16 @@
                     </div>
                 </div> -->
                 <div class="sec">
-                    <input type="submit" value="Submit">
+                    <input type="submit" id="submitBtn" value="Submit">
                 </div>
                 <div class="show">
-                    <button onclick="location.href='show.php'">show</button>
+                    <!-- <button onclick="location.href='show.php'">show</button> -->
+                    <button onclick="location.href='index.html'">BACK</button>
                 </div>
             </form>
         </div>
     </div>
+    <script src="skrip.js"></script>
 </body>
 
 </html>

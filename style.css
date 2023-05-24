@@ -6,6 +6,13 @@ body {
   box-sizing: border-box;
 }
 
+
+
+.id{
+  display: none !important;
+}
+
+
 .container {
   padding: 10px;
 }

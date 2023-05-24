@@ -7,6 +7,8 @@ rows.forEach((row) => {
   const tunggakan = row.querySelector("[data-label='tunggakan']").textContent
   const nextBtn = row.querySelector(".next")
   const keterangan = row.querySelector("[data-label='keterangan']")
+  const id = document.querySelector(".id")
+  id.style.display = "none"
 
   if (dokumen === "tidak aman" || kondisi === "tidak aman" || p2tl === "tidak aman" || tunggakan === "tidak aman") {
     nextBtn.style.background = "red"
