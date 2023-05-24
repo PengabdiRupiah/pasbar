@@ -3,7 +3,7 @@ require 'dbcon.php';
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $selectQuery = "SELECT * FROM repo WHERE id = $id";
+    $selectQuery = "SELECT * FROM tb_3 WHERE id = $id";
     $result = mysqli_query($conn, $selectQuery);
     if (mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);
@@ -14,13 +14,13 @@ if (isset($_GET['id'])) {
         $p2tl = $row['p2tl'];
         $tunggakan = $row['tunggakan'];
 
-        $insertQuery = "INSERT INTO tb_3 (nama, alamat, dokumen, kondisi, p2tl, tunggakan) VALUES ('$nama', '$alamat', '$dokumen', '$kondisi', '$p2tl', '$tunggakan')";
+        $insertQuery = "INSERT INTO tb_4 (nama, alamat, dokumen, kondisi, p2tl, tunggakan) VALUES ('$nama', '$alamat', '$dokumen', '$kondisi', '$p2tl', '$tunggakan')";
         mysqli_query($conn, $insertQuery);
 
-        $deleteQuery = "DELETE FROM repo WHERE id = $id";
+        $deleteQuery = "DELETE FROM tb_3 WHERE id = $id";
         mysqli_query($conn, $deleteQuery);
 
-        header("Location: menu22.php"); 
+        header("Location: pasang.php"); 
         exit();
     }
 }
@@ -40,7 +40,6 @@ if (isset($_GET['id'])) {
         <table>
             <thead>
                 <tr>
-                    <th>No</th>
                     <th>Nama</th>
                     <th>Alamat</th>
                     <th>Dokumen</th>
@@ -73,15 +72,14 @@ if (isset($_GET['id'])) {
                             <td data-label="tunggakan"><?= $tunggakan; ?></td>
                             <td>
                                 <?php if ($disabled == '') { ?>
-                                <a class="next <?= $btn_class; ?>" href="insert_data2.php?id=<?= $pln['id']; ?>" <?= $disabled ?>>next</a>
-
+                                <a class="next <?= $btn_class; ?>" href="insert_data3.php?id=<?= $pln['id']; ?>&redirect=pasang.php">next</a><?php } ?>
                             </td>
                         </tr>
                         
                 <?php
                     }
                 }
-            }
+
                 ?>
             </tbody>
         </table>

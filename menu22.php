@@ -40,7 +40,6 @@ if (isset($_GET['id'])) {
         <table>
             <thead>
                 <tr>
-                    <th>No</th>
                     <th>Nama</th>
                     <th>Alamat</th>
                     <th>Dokumen</th>

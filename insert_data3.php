@@ -4,7 +4,7 @@ require 'dbcon.php';
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
   $id = $_GET['id'];
 
-  $query = "SELECT * FROM tb_1 WHERE id = '$id'";
+  $query = "SELECT * FROM tb_3 WHERE id = '$id'";
   $result = mysqli_query($conn, $query);
 
   if (mysqli_num_rows($result) > 0) {
@@ -12,14 +12,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
     $nama = $row['nama'];
     $alamat = $row['alamat'];
-    $daya = $row['daya'];
-    $notelp = $row['no_telp'];
-    $instalasi = $row['instalasi'];
+    $dokumen = $row['dokumen'];
+    $kondisi = $row['kondisi'];
+    $p2tl = $row['p2tl'];
+    $tunggakan = $row['tunggakan'];
 
-    $insertQuery = "INSERT INTO tb_2 (nama, alamat, daya, no_telp, instalasi) VALUES ('$nama', '$alamat', '$daya', '$notelp', '$instalasi')";
+    $insertQuery = "INSERT INTO tb_4 (nama, alamat, dokumen, kondisi, p2tl, tunggakan) VALUES ('$nama', '$alamat', '$dokumen', '$kondisi', '$p2tl', '$tunggakan')";
 
     if (mysqli_query($conn, $insertQuery)) {
-      $deleteQuery = "DELETE FROM tb_1 WHERE id = '$id'";
+      $deleteQuery = "DELETE FROM tb_3 WHERE id = '$id'";
       if (mysqli_query($conn, $deleteQuery)) {
         if (isset($_GET['redirect'])) {
           $redirect = $_GET['redirect'];

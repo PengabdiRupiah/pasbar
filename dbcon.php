@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "googlemaps";
+$dbname = "data_pelanggan";
 
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
